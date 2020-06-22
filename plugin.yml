@@ -2,3 +2,13 @@ name: Calculator
 version: 1.0.0
 main: pjz9n\calculator\Main
 api: 3.0.0
+commands:
+  calculator:
+    description: 計算機を開きます
+    usage: /calculator
+    aliases:
+      - calc
+    permission: calculator.command.calc
+permissions:
+  calculator.command.calc:
+    default: true
