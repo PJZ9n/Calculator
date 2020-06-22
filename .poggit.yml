@@ -5,6 +5,5 @@ branches:
 projects:
   Calculator:
     libs:
-      - src: dktapps-pm-pl/pmforms/pmforms
       - src: pjz9n/resourcepacktools/ResourcePackTools
 ...
