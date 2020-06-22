@@ -55,6 +55,11 @@ class Main extends PluginBase
         $pack->registerResourcePack();
     }
 
+    public function onDisable(): void
+    {
+        $this->saveConfig();
+    }
+
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
     {
         switch ($command) {
