@@ -21,7 +21,7 @@
 
 declare(strict_types=1);
 
-namespace pjz9n\template;
+namespace pjz9n\calculator;
 
 use pocketmine\plugin\PluginBase;
 
