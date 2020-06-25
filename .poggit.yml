@@ -6,4 +6,5 @@ projects:
   Calculator:
     libs:
       - src: pjz9n/resourcepacktools/ResourcePackTools
+        version: 2.0.0
 ...

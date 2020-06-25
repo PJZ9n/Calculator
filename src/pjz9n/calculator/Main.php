@@ -24,8 +24,9 @@ declare(strict_types=1);
 namespace pjz9n\calculator;
 
 use pjz9n\calculator\form\SelectForm;
-use pjz9n\resourcepacktools\FileResourcePack;
-use pjz9n\resourcepacktools\ResourcePackVersion;
+use pjz9n\resourcepacktools\generator\SimpleResourcePack;
+use pjz9n\resourcepacktools\manifest\Version;
+use pjz9n\resourcepacktools\ResourcePack;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\Player;
@@ -41,11 +42,15 @@ class Main extends PluginBase
     public function onEnable(): void
     {
         $this->saveDefaultConfig();
-        $pack = new FileResourcePack($this->getDataFolder() . "resource.zip", $this, new ResourcePackVersion(1, 0, 0));
-        $pack->setIcon("images/icon.png");
-        $pack->addFile("images/calculator.png", "form/calculator.png");
-        $pack->addFile("images/settings.png", "form/settings.png");
-        $pack->registerResourcePack();
+        $path = $this->getDataFolder() . "resource.zip";
+        $pack = new SimpleResourcePack($this, new Version(2, 0, 0));
+        $pack->setPackIcon("images/icon.png");
+        //Tip: ファイルの衝突を防止するために、固有のプラグイン名ディレクトリの下に配置します。
+        //Tip: Place it under a directory with a unique plugin name to prevent file conflicts.
+        $pack->addFile("images/calculator.png", "calculator/form/calculator.png");
+        $pack->addFile("images/settings.png", "calculator/form/settings.png");
+        $pack->generate($path);
+        ResourcePack::register($path);
     }
 
     public function onDisable(): void
